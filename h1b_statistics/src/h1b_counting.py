@@ -43,13 +43,14 @@ def get_top10_occupations(h1b_header, h1b_stat):
         occupation.append(row)
     # sort top10
     sorted_ocp = sorted(sorted(occupation, key=lambda a:a[0]),key = lambda a:a[1], reverse=True)
+    top10 = sorted_ocp[:10]
     # write file
     output = open('../output/top_10_occupations.txt','w')
     output.write('TOP_OCCUPATIONS;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
-    for row in sorted_ocp:
+    for row in top10:
         output.write(';'.join(row)+'\n')
     output.close()
-    return sorted_ocp
+    return top10
 
 def get_top10_state(h1b_header, h1b_stat):
 
@@ -78,17 +79,16 @@ def get_top10_state(h1b_header, h1b_stat):
         percentage = "{:.0%}".format(round(float(status_num)/len(h1b_stat),1))
         row = [i, str(status_num), str("{:.0%}".format(round(float(status_num)/len(h1b_stat),1)))]
         states.append(row)
-
     # sort top10
     sorted_state = sorted(sorted(states, key=lambda a:a[0]),key = lambda a:a[1], reverse=True)
-
+    top10 = sorted_state[:10]
     # write file
     output = open('../output/top_10_states.txt','w')
     output.write('TOP_STATES;NUMBER_CERTIFIED_APPLICATIONS;PERCENTAGE\n')
-    for row in sorted_state:
+    for row in top10:
         output.write(';'.join(row)+'\n')
     output.close()
-    return sorted_state
+    return top10
 
 # run functions
 get_top10_occupations(h1b_header, h1b_stat)
