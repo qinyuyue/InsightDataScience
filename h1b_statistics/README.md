@@ -2,7 +2,7 @@
 $ python h1b_counting.py
 
 # about code
-There are two functions in h1b_counting.py for counting occupation and state separately.  
+There are two functions in h1b_counting.py for counting occupation and state separately. The algorithm of the two function are similar. 
 
 ## algorithm
 1. input csv file as array. (the only place I used numpy libraray function)
@@ -10,7 +10,8 @@ There are two functions in h1b_counting.py for counting occupation and state sep
 3. use these indexes to get the target column. 
 4. counting, if the statement is true(e.g. if value in STATUS == "Certified")
 5. calculate the percentage.
-5. output the result as text format.
+6. sort the counting result. 
+7. output the top10 result as text format.
 
 ## further improvement 
 1. Since the column name is slitely different between 2014 and others, I set if statement to contatin two of them. However, the statement may change in future. If want to find this similar column automatically, it is better to input regex libaray and use wildcard. 
